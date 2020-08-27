@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab00/firstProject/main.cpp
+iostream
+-
+vector
+-
+string
+-
+whattotest.h
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab00/firstProject/whattotest.h
+
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab00/firstProject/whattotest.h
+vector
+-
+
