@@ -1,0 +1,2 @@
+/usr/bin/ar qc libapplibrary.a  CMakeFiles/applibrary.dir/whattotest.cpp.o
+/usr/bin/ranlib libapplibrary.a
