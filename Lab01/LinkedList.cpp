@@ -53,17 +53,38 @@ PointerBasedLinkedList::PointerBasedLinkedList() : ILinkedList(), m_head(nullptr
 {
 
 }
-/** Returns true  if list is empty, otherwise true */
+/** Returns true  if list is empty, otherwise true(false?) */
 bool PointerBasedLinkedList::isEmpty() const
 {
-	return false;
-	//TODO
+	//Check if the head node is empty
+	if(m_head == nullptr)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 /** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 bool PointerBasedLinkedList::add(int val)
 {
-	return false;
 	//TODO
+	/*Node *nextNode = new Node();
+	nextNode->m_value = val;
+	nextNode->m_next = nullptr;
+
+	if(m_head->getNext() == nullptr)
+	{
+		m_head->setNext(nextNode);
+		nextNode->getNext();
+		//return true;
+	}
+	else
+	{
+		//return false;
+	}*/
+	
 }
 /** Remove a value to the LinkedList.  Return true if able to, otherwise false.
 Will only remove one entry if there are multiple entries with the same value */
@@ -104,12 +125,25 @@ ArrayBasedLinkedList::ArrayBasedLinkedList() : ILinkedList()
 
 bool ArrayBasedLinkedList::isEmpty() const
 {
+	for(int i=0; i < 10; i++)
+	{
+		if(m_values[i] != -1)
+		{
+			return false;
+		}
+	}
 	return true;
-	//TODO
 }
 bool ArrayBasedLinkedList::add(int val)
 {
-	//TODO
+	for(int i=0; i < 10; ++i)
+	{
+		if(m_values[i] == -1)
+		{
+			m_values[i] == val;
+			return true;
+		}
+	}
 	return false;
 }
 bool ArrayBasedLinkedList::remove(int val)
