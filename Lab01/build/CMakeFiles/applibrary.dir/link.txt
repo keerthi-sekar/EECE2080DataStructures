@@ -1,0 +1,2 @@
+/usr/bin/ar qc libapplibrary.a  CMakeFiles/applibrary.dir/LinkedList.cpp.o
+/usr/bin/ranlib libapplibrary.a
