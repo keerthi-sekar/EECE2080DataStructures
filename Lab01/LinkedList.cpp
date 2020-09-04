@@ -126,7 +126,8 @@ ArrayBasedLinkedList::ArrayBasedLinkedList() : ILinkedList()
 bool ArrayBasedLinkedList::isEmpty() const
 {
 	for(int i=0; i < 10; i++)
-	{
+	{   
+		//in our logic, we are saying all -1 in the array means the array is empty
 		if(m_values[i] != -1)
 		{
 			return false;
@@ -140,7 +141,7 @@ bool ArrayBasedLinkedList::add(int val)
 	{
 		if(m_values[i] == -1)
 		{
-			m_values[i] == val;
+			m_values[i] = val;
 			return true;
 		}
 	}
@@ -148,12 +149,22 @@ bool ArrayBasedLinkedList::add(int val)
 }
 bool ArrayBasedLinkedList::remove(int val)
 {
-	//TODO
+	for(int i=0; i < 10; i++)
+	{
+		if(m_values[i] == val)
+		{
+			m_values[i] = -1;
+			return true;
+		}
+	}
 	return false;
 }
 void ArrayBasedLinkedList::clear()
 {
-	//TODO
+	for(int i=0; i < 10; i++)
+	{
+		m_values[i] = -1;
+	}
 }
 ArrayBasedLinkedList::~ArrayBasedLinkedList()
 {
@@ -162,9 +173,37 @@ ArrayBasedLinkedList::~ArrayBasedLinkedList()
 
 std::string ArrayBasedLinkedList::toString() const
 {
-	string str = "";
+	string str;
+	int count = 0;
+	for(int i=0; i < 10; i++)
+	{
+		string currentString = "";
+		if(m_values[i] == -1)
+		{
+			currentString = "";
+		}
+		else
+		{
+			currentString = to_string(m_values[i]);
+		}
+
+		if(count >= 1 && m_values[i] != -1)
+		{
+			str += " " + currentString;
+		}
+		else
+		{
+			str += currentString;
+		}
+		count++;
+
+	}
 	
-	//TODO
+	//clean up string (delete leading spaces if remove is called)
+	if(str[0] == ' ')
+	{
+		str.erase(0, 1);
+	}
 
 	return str;
 }

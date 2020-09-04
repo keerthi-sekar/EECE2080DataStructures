@@ -7,7 +7,7 @@ public:
 
 	ILinkedList();
 
-	/** Returns true  if list is empty, otherwise true */
+	/** Returns true  if list is empty, otherwise false */
 	virtual bool isEmpty() const = 0;
 	/** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 	virtual bool add(int val) = 0;
@@ -47,7 +47,7 @@ class ArrayBasedLinkedList : public ILinkedList
 {
 public:
 	ArrayBasedLinkedList();
-	/** Returns true  if list is empty, otherwise true */
+	/** Returns true  if list is empty, otherwise false */
 	bool isEmpty() const override;
 	/** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 	bool add(int val) override;
