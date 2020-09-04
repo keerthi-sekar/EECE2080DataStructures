@@ -69,8 +69,7 @@ bool PointerBasedLinkedList::isEmpty() const
 /** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 bool PointerBasedLinkedList::add(int val)
 {
-	//TODO
-	/*Node *nextNode = new Node();
+	Node *nextNode = new Node();
 	nextNode->m_value = val;
 	nextNode->m_next = nullptr;
 
@@ -83,7 +82,7 @@ bool PointerBasedLinkedList::add(int val)
 	else
 	{
 		//return false;
-	}*/
+	}
 	
 }
 /** Remove a value to the LinkedList.  Return true if able to, otherwise false.
