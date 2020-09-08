@@ -127,6 +127,17 @@ bool PointerBasedLinkedList::remove(int val)
 /** Remove  all elements from LinkedList */
 void PointerBasedLinkedList::clear()
 {
+	Node *current = new Node();
+	Node *temp = new Node();
+
+	current = m_head;
+
+	while(current != nullptr)
+	{
+		temp = current->getNext();
+		free(current);
+		current = temp;
+	}
 	m_head = nullptr;
 }
 PointerBasedLinkedList::~PointerBasedLinkedList()
