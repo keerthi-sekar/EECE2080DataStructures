@@ -70,20 +70,27 @@ bool PointerBasedLinkedList::isEmpty() const
 bool PointerBasedLinkedList::add(int val)
 {
 	Node *nextNode = new Node();
-	nextNode->m_value = val;
-	nextNode->m_next = nullptr;
+	nextNode->setItem(val);
+	nextNode->setNext(nullptr);
 
 	if(m_head->getNext() == nullptr)
 	{
 		m_head->setNext(nextNode);
 		nextNode->getNext();
-		//return true;
+		return true;
 	}
 	else
 	{
-		//return false;
+		Node *temp;
+		temp = m_head;
+
+		while(temp != nullptr)
+		{
+			temp = temp->getNext();
+		}
+		temp->setNext(nextNode);
 	}
-	
+	return false;
 }
 /** Remove a value to the LinkedList.  Return true if able to, otherwise false.
 Will only remove one entry if there are multiple entries with the same value */
@@ -108,9 +115,15 @@ PointerBasedLinkedList::~PointerBasedLinkedList()
 std::string PointerBasedLinkedList::toString() const
 {
 	string str = "";
+	Node *temp;
+	temp = m_head;
 
+	while(temp != nullptr)
+	{
+		str += to_string(temp->getItem());
+		temp = temp->getNext();
+	}
 
-    //TODO
 	return str;
 }
 
