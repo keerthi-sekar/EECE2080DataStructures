@@ -73,38 +73,67 @@ bool PointerBasedLinkedList::add(int val)
 	nextNode->setItem(val);
 	nextNode->setNext(nullptr);
 
-	if(m_head->getNext() == nullptr)
+	Node *temp = new Node();
+	temp = m_head;
+
+	if(m_head == nullptr)
 	{
-		m_head->setNext(nextNode);
-		nextNode->getNext();
+		m_head = nextNode;
 		return true;
 	}
 	else
 	{
-		Node *temp;
-		temp = m_head;
-
 		while(temp != nullptr)
 		{
 			temp = temp->getNext();
 		}
 		temp->setNext(nextNode);
+		return true;
 	}
+	
 	return false;
 }
 /** Remove a value to the LinkedList.  Return true if able to, otherwise false.
 Will only remove one entry if there are multiple entries with the same value */
 bool PointerBasedLinkedList::remove(int val)
 {
-	//TODO
-	return false;
+	Node *temp = new Node();
+	Node *newNode = new Node();
+
+	temp = m_head;
+
+	if(temp == nullptr)
+	{
+		return false;
+	}
+
+	while(temp != nullptr)
+	{
+		temp->getNext();
+		if(temp->getItem() == val)
+		{
+			newNode = temp->getNext();
+			delete newNode;
+			return true;
+		}
+	}
+
 }
 
 /** Remove  all elements from LinkedList */
 void PointerBasedLinkedList::clear()
 {
-	m_head = NULL; 
-    //TODO
+	Node *current = new Node();
+	Node *nextNode = new Node();
+	current = m_head;
+
+	while(current != nullptr)
+	{
+		nextNode = current->getNext();
+		delete current;
+		current = nextNode;	
+	}
+	m_head = nullptr;
 }
 PointerBasedLinkedList::~PointerBasedLinkedList()
 {
@@ -132,7 +161,6 @@ ArrayBasedLinkedList::ArrayBasedLinkedList() : ILinkedList()
 	for (int i = 0; i < 10; ++i) {
 		m_values[i] = -1;
 	}
-	//TODO
 }
 
 bool ArrayBasedLinkedList::isEmpty() const
