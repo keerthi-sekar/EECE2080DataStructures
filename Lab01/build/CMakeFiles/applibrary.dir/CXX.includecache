@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/LinkedList.cpp
+LinkedList.h
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/LinkedList.h
+iostream
+-
+string
+-
+cmath
+-
+iomanip
+-
+sstream
+-
+
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/LinkedList.h
+string
+-
+

@@ -1,0 +1,5 @@
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build/CMakeFiles/rebuild_cache.dir
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build/CMakeFiles/edit_cache.dir
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build/CMakeFiles/runMain.dir
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build/CMakeFiles/runTests.dir
+/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build/CMakeFiles/applibrary.dir

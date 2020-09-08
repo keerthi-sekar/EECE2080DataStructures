@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/runMain.dir/main.cpp.o -c /home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/main.cpp",
+  "file": "/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/main.cpp"
+},
+{
+  "directory": "/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/runTests.dir/tests.cpp.o -c /home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/tests.cpp",
+  "file": "/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/tests.cpp"
+},
+{
+  "directory": "/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/build",
+  "command": "/usr/bin/c++    -g   -o CMakeFiles/applibrary.dir/LinkedList.cpp.o -c /home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/LinkedList.cpp",
+  "file": "/home/keerthi-sekar/C/Documents/UnixFiles/DataStructures/EECE2080DataStructures/Lab01/LinkedList.cpp"
+}
+]
