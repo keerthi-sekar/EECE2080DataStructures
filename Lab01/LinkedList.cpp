@@ -46,7 +46,7 @@ Node * Node::getNext() const
 Node::~Node()
 {
 	std::cout << "Deleting node with value " << m_value << std::endl;
-	//TODO - hint, you can recursively handle this
+	delete m_next;
 }
 
 PointerBasedLinkedList::PointerBasedLinkedList() : ILinkedList(), m_head(nullptr)
@@ -71,7 +71,7 @@ bool PointerBasedLinkedList::add(int val)
 {
 	Node *nextNode = new Node();
 	nextNode->setItem(val);
-	nextNode->setNext(nullptr);
+	//nextNode->setNext(nullptr);
 
 	Node *temp = new Node();
 	temp = m_head;
@@ -83,7 +83,7 @@ bool PointerBasedLinkedList::add(int val)
 	}
 	else
 	{
-		while(temp != nullptr)
+		while(temp->getNext() != nullptr)
 		{
 			temp = temp->getNext();
 		}
@@ -98,46 +98,39 @@ Will only remove one entry if there are multiple entries with the same value */
 bool PointerBasedLinkedList::remove(int val)
 {
 	Node *temp = new Node();
-	Node *newNode = new Node();
+	Node *prevNode = new Node();
 
 	temp = m_head;
+
+	//if head has the value that needs to be deleted
+	if(temp != nullptr && temp->getItem() == val)
+	{
+		m_head = temp->getNext();
+		return true;
+	}
+
+	while(temp != nullptr && temp->getItem() != val)
+	{
+		prevNode = temp;
+		temp = temp->getNext();
+	}
 
 	if(temp == nullptr)
 	{
 		return false;
 	}
 
-	while(temp != nullptr)
-	{
-		temp->getNext();
-		if(temp->getItem() == val)
-		{
-			newNode = temp->getNext();
-			delete newNode;
-			return true;
-		}
-	}
-
+	prevNode->setNext(temp->getNext());
+	return true;
 }
 
 /** Remove  all elements from LinkedList */
 void PointerBasedLinkedList::clear()
 {
-	Node *current = new Node();
-	Node *nextNode = new Node();
-	current = m_head;
-
-	while(current != nullptr)
-	{
-		nextNode = current->getNext();
-		delete current;
-		current = nextNode;	
-	}
 	m_head = nullptr;
 }
 PointerBasedLinkedList::~PointerBasedLinkedList()
 {
-	//TODO
 	delete m_head;
 }
 
@@ -146,13 +139,26 @@ std::string PointerBasedLinkedList::toString() const
 	string str = "";
 	Node *temp;
 	temp = m_head;
-
-	while(temp != nullptr)
+	if(temp != nullptr)
 	{
-		str += to_string(temp->getItem());
-		temp = temp->getNext();
+		while(temp->getNext() != nullptr && temp != nullptr)
+		{
+			str += to_string(temp->getItem()) + " ";
+			temp = temp->getNext();
+		}
+		while(temp != nullptr)
+		{
+			str += to_string(temp->getItem());
+			temp = temp->getNext();
+		}
 	}
-
+	else
+	{
+		{
+			str = "";
+		}
+	}
+	
 	return str;
 }
 
