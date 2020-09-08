@@ -1,4 +1,4 @@
-# EECE2080DataStructures
+# EECE2080: DataStructures 1
 EECE2080 Data Structures Labs and Class Work backup
 
 **Labs:**
