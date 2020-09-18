@@ -309,6 +309,7 @@ int main()
 					game.makeMove(diskId, fromId, toId);
 					if (game.IsGameEnded() == true)
 					{
+						cout << "Congrat's! You Won!!! :)" << endl;
 						receivedEndToken = true;
 					}
 				}
