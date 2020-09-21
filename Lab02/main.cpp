@@ -1,5 +1,7 @@
 // TowerHannoiGame.cpp : Defines the entry point for the console application.
-//
+// main.cpp: Gives the user 2 choices via manual or file input. This script runs the game with in mind various user errors that could go wrong. 
+//           The file merely identifies the error and exits the program so the user can fix there mistakes. Cute emojis in the terminal identify that the user has won.
+// StackQueue.h: Has the basic stack and queue functinality to pass the test cases, as well as, make the main.cpp functional in the "backend".
 
 #include "StackQueue.h"
 #include <iostream>
@@ -63,8 +65,6 @@ public:
 		}
 		cout << endl;
 	}
-
-	//bool fileMoves()
 
 	bool makeMove(int disk, int colFrom, int colTo)
 	{
@@ -156,7 +156,7 @@ public:
 			}
 			else
 			{
-				cout << "Invalid column to move disk from or move disk to was chosen OR";
+				cout << "Invalid column to move disk from or move disk to was chosen OR ";
 				cout << "column to move from did not contain the selected disk." << endl;
 				cout << "Please check the state of the game." << endl;
 				return false;
@@ -194,9 +194,21 @@ int main()
 	getline(cin, gameType);
 	if (gameType == "0")
 	{
-		ifstream file("moves.txt");
+		ifstream movesFile;
 		string inputLine;
-		while (getline(file, inputLine) || game.IsGameEnded())
+
+		movesFile.open("moves.txt");
+
+		if(movesFile.fail())
+		{
+			cout << "Error: Couldn't open file. Please make sure it's in the Lab02 build folder!" << endl;
+		}
+		else
+		{
+			cout << "Reading File... We are assuming you entered the moves right, double check the file if it doesn't work!" << endl;
+		}
+		
+		while ((getline(movesFile, inputLine, '\n') || !game.IsGameEnded()) && !receivedEndToken)
 		{
 			game.PrintTowers();
 			if (inputLine == "-1")
@@ -247,6 +259,11 @@ int main()
 
 					cout << "Disk " << diskId << " From " << fromId << " To " << toId << endl;
 					game.makeMove(diskId, fromId, toId);
+					if (game.IsGameEnded() == true)
+					{
+						cout << "(ღ˘⌣˘ღ) ´͈ ᵕ `͈  Congrat's! You Won!!! ´͈ ᵕ `͈  (ღ˘⌣˘ღ)" << endl;
+						receivedEndToken = true;
+					}
 				}
 			}
 		}
