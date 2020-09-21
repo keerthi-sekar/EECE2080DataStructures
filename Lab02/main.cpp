@@ -189,25 +189,25 @@ int main()
 
 	bool receivedEndToken = false;
 	string gameType = "0";
+	ifstream movesFile;
+	string inputLine;
 
-	cout << "Enter 1 for manual gameplay or 0 for file gameplay." << endl;
-	getline(cin, gameType);
-	if (gameType == "0")
+	movesFile.open("moves.txt");
+
+	if(movesFile.fail())
 	{
-		ifstream movesFile;
-		string inputLine;
+		cout << "Error: Couldn't open file. Please make sure it's in the Lab02 build folder!" << endl;
+		cout << "ENTERING MANUAL MODE." << endl;
+		gameType = "1";
+	}
+	else
+	{
+		cout << "Reading File... We are assuming you entered the moves right, double check the file if it doesn't work!" << endl;
+		gameType = "0";
+	}
 
-		movesFile.open("moves.txt");
-
-		if(movesFile.fail())
-		{
-			cout << "Error: Couldn't open file. Please make sure it's in the Lab02 build folder!" << endl;
-		}
-		else
-		{
-			cout << "Reading File... We are assuming you entered the moves right, double check the file if it doesn't work!" << endl;
-		}
-		
+	if (gameType == "0")
+	{		
 		while ((getline(movesFile, inputLine, '\n') || !game.IsGameEnded()) && !receivedEndToken)
 		{
 			game.PrintTowers();
