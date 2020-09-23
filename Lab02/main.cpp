@@ -181,7 +181,7 @@ public:
 		string moves;
 		if(checkValidMove)
 		{
-			moves = to_string(disk) + "," + to_string(colFrom) + "," + to_string(colTo);
+			moves = "VALID: " + to_string(disk) + "," + to_string(colFrom) + "," + to_string(colTo);
 		}
 		else
 		{
