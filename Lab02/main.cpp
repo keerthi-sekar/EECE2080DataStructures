@@ -68,6 +68,7 @@ public:
 
 	bool makeMove(int disk, int colFrom, int colTo)
 	{
+		checkValidMove = true;
 		if (disk >= 1 && (colFrom != colTo))
 		{
 			if (colFrom == 1 && m_stack1.back() == disk)
@@ -94,6 +95,7 @@ public:
 				}
 				else
 				{
+					checkValidMove = false;
 					cout << "Larger disks cannot be placed on smaller disks. 1 is the smallest disk and 4 is the largest." << endl;
 					return false;
 				}
@@ -122,6 +124,7 @@ public:
 				}
 				else
 				{
+					checkValidMove = false;
 					cout << "Larger disks cannot be placed on smaller disks. 1 is the smallest disk and 4 is the largest." << endl;
 					return false;
 				}
@@ -150,12 +153,14 @@ public:
 				}
 				else
 				{
+					checkValidMove = false;
 					cout << "Larger disks cannot be placed on smaller disks. 1 is the smallest disk and 4 is the largest." << endl;
 					return false;
 				}
 			}
 			else
 			{
+				checkValidMove = false;
 				cout << "Invalid column to move disk from or move disk to was chosen OR ";
 				cout << "column to move from did not contain the selected disk." << endl;
 				cout << "Please check the state of the game." << endl;
@@ -164,23 +169,46 @@ public:
 		}
 		else
 		{
+			checkValidMove = false;
 			cout << "Invalid move. Select disks from 1 to 4 and columns from 1 to 3." << endl;
 			return false;
 		}
+		TrackMoves(disk, colFrom, colTo);
+	}
+
+	void TrackMoves(int disk, int colFrom, int colTo)
+	{
+		string moves;
+		if(checkValidMove)
+		{
+			moves = to_string(disk) + "," + to_string(colFrom) + "," + to_string(colTo);
+		}
+		else
+		{
+			moves = "INVALID: " + to_string(disk) + "," + to_string(colFrom) + "," + to_string(colTo);
+		}
+		m_moves.push_back(moves);
+	}
+
+	void PrintMoves()
+	{
+		ofstream outputFile;
+		outputFile.open("movesTranscript.txt");
+		for(int i=0; i < m_moves.size(); i++)
+		{
+			outputFile << m_moves[i] << endl;
+		}
+		cout << "Printing to File is complete." << endl;
 	}
 
 private:
 	bool m_GameEnded;
-	ArrayBasedQueue m_moves;
+	bool checkValidMove;
+	vector<string> m_moves;
 	vector<int> m_stack1;
 	vector<int> m_stack2;
 	vector<int> m_stack3;
 };
-
-void TrackMoves()
-{
-
-}
 
 int main()
 {
@@ -218,11 +246,11 @@ int main()
 			game.PrintTowers();
 			if (inputLine == "-1")
 			{
+				game.PrintMoves();
 				receivedEndToken = true;
 			}
 			else
 			{
-				//parseMoves(inputLine, game);
 				std::vector<std::string> output;
 				std::string::size_type prev_pos = 0, pos = 0;
 				// Snippet from https://stackoverflow.com/questions/5167625/splitting-a-c-stdstring-using-tokens-e-g
@@ -262,12 +290,13 @@ int main()
 						receivedEndToken = true;
 						cout << "Invalid input recieved = " + inputLine << endl;
 					}
-
+					
 					cout << "Disk " << diskId << " From " << fromId << " To " << toId << endl;
 					game.makeMove(diskId, fromId, toId);
 					if (game.IsGameEnded() == true)
 					{
-						cout << "(ღ˘⌣˘ღ) ´͈ ᵕ `͈  Congrat's! You Won!!! ´͈ ᵕ `͈  (ღ˘⌣˘ღ)" << endl;
+						game.PrintMoves();
+						cout << "(ღ˘⌣˘ღ) ´͈ ᵕ `͈  Congrats! You Won!!! ´͈ ᵕ `͈  (ღ˘⌣˘ღ)" << endl;
 						receivedEndToken = true;
 					}
 				}
@@ -333,7 +362,7 @@ int main()
 					game.makeMove(diskId, fromId, toId);
 					if (game.IsGameEnded() == true)
 					{
-						cout << "(ღ˘⌣˘ღ) ´͈ ᵕ `͈  Congrat's! You Won!!! ´͈ ᵕ `͈  (ღ˘⌣˘ღ)" << endl;
+						cout << "(ღ˘⌣˘ღ) ´͈ ᵕ `͈  Congrats! You Won!!! ´͈ ᵕ `͈  (ღ˘⌣˘ღ)" << endl;
 						receivedEndToken = true;
 					}
 				}
