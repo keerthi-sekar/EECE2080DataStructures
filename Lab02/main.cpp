@@ -177,6 +177,11 @@ private:
 	vector<int> m_stack3;
 };
 
+void TrackMoves()
+{
+
+}
+
 int main()
 {
 
@@ -198,7 +203,7 @@ int main()
 	{
 		cout << "Error: Couldn't open file. Please make sure it's in the Lab02 build folder!" << endl;
 		cout << "ENTERING MANUAL MODE." << endl;
-		gameType = "1";
+		gameType = "1"; //failsafe just in case file fails to open
 	}
 	else
 	{
@@ -217,6 +222,7 @@ int main()
 			}
 			else
 			{
+				//parseMoves(inputLine, game);
 				std::vector<std::string> output;
 				std::string::size_type prev_pos = 0, pos = 0;
 				// Snippet from https://stackoverflow.com/questions/5167625/splitting-a-c-stdstring-using-tokens-e-g
@@ -282,6 +288,7 @@ int main()
 			}
 			else
 			{
+				//need to repeat code so it doesn't get into segmentation fault (when in function)
 				std::vector<std::string> output;
 				std::string::size_type prev_pos = 0, pos = 0;
 				// Snippet from https://stackoverflow.com/questions/5167625/splitting-a-c-stdstring-using-tokens-e-g
@@ -326,7 +333,7 @@ int main()
 					game.makeMove(diskId, fromId, toId);
 					if (game.IsGameEnded() == true)
 					{
-						cout << "Congrat's! You Won!!! :)" << endl;
+						cout << "(ღ˘⌣˘ღ) ´͈ ᵕ `͈  Congrat's! You Won!!! ´͈ ᵕ `͈  (ღ˘⌣˘ღ)" << endl;
 						receivedEndToken = true;
 					}
 				}
