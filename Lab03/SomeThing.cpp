@@ -18,9 +18,9 @@ static int guid = 1;
 		m_guid = guid;
 		guid++;
 	}
-     Card::~Card() {}
+    Card::~Card() {}
 
-	Card::Card(const Card &c)
+	Card::Card(Card& c)
 	{
 		std::cout << "    BAD!!!! Copy Constructor being called.  I shouldn't really be callled!!!" << std::endl;
 		m_value = c.m_value;
@@ -32,7 +32,7 @@ static int guid = 1;
 	int Card::GetValue() const { return m_value; }
 	int Card::GetSuit() const { return m_suit; }
 
-	Card::Card(Card &&obj)
+	Card::Card(Card&& obj)
 	{
 		std::cout << "    Calling Move Constructor" << std::endl;
 		this->m_value = obj.m_value;
@@ -168,6 +168,7 @@ static int guid = 1;
 
 	void Person::Mulligan(Deck deck)
 	{
+		//check size > 0
 		for (int i = 0; i < m_handOfCards.size() - 1; i++)
 		{
 			//deck.m_deck.insert(deck.m_deck.begin(), std::move(m_handOfCards.at(i)));
@@ -203,7 +204,7 @@ static int guid = 1;
 
 		int playChoice;
 
-		bool gameEnded;
+		bool gameEnded = false;
 		while (!gameEnded)
 		{
 			std::cout << "Would you like to get a new hand and end your turn? Enter 0 for yes and 1 for no." << std::endl;

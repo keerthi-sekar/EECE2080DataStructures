@@ -12,9 +12,9 @@ class Card
 {
     public: 
     Card(int value, int suit);
-     ~Card();
-    Card(const Card &c);
-    Card(Card &&obj);
+    ~Card();
+    Card(Card& c);
+    Card(Card&& obj);
     int GetValue() const;
     int GetSuit() const;
    
