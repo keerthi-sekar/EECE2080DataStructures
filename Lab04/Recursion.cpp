@@ -4,11 +4,52 @@
 #include<iostream>
 #include<sstream>
 #include<string>
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
 
 // 3! = 3 * 2 * 1
 // 4! = 4 * 3 * 2 * 1
+string Palidrome::GetWord() const { return word; }
+
+string Palidrome::FormatLetters()
+{
+	string newWord = "";
+
+	newWord = boost::algorithm::to_lower_copy(word);
+	cout << newWord << endl;
+	
+	return newWord;
+}
+
+bool Palidrome::CheckPalidromeRecursion(int startIndex, int endIndex)
+{
+	string formatWord = FormatLetters();
+
+	//Assuming empty string is not a palidrome
+	if(formatWord.length() == 0)
+	{
+		return false;
+	}
+	
+	//For passing in index (>=) referenced stackoverflow for help
+	if(startIndex >= endIndex)
+	{
+		return true;
+	}
+	if(formatWord[startIndex] != formatWord[endIndex])
+	{
+		return false;
+	}
+
+	return CheckPalidromeRecursion(++startIndex, --endIndex);
+}
+
+bool Palidrome::CheckPalidromeStack()
+{
+
+	return true;
+}
 
 
 int FactorialByRecursion::CalculateFactorial(int num) {

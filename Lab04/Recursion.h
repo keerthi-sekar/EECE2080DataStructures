@@ -6,6 +6,23 @@
 
 using namespace std;
 
+class Palidrome
+{
+	public:
+	Palidrome(string value) { word = value; }
+	string GetWord() const;
+	string FormatLetters();
+
+	bool CheckPalidromeRecursion(int startIndex, int endIndex);
+	bool CheckPalidroneStack();
+
+	private:
+	string word;
+	stack<char> wordCheck;
+
+};
+
+
 class  IFactorialComputer
 {
 public:
