@@ -1,0 +1,60 @@
+Calling Pointer Version
+   AddCardToHandPointer :1 1
+   AddCardToHandPointer :1 2
+End Calling Pointer Version
+
+
+Calling Object Version1
+    BAD!!!! Copy Constructor being called.  I shouldn't really be callled!!!
+   AddCardToHandObject1 :1 1
+    BAD!!!! Copy Constructor being called.  I shouldn't really be callled!!!
+End Calling Object Version1
+
+
+Calling Object Version2
+    BAD!!!! Copy Constructor being called.  I shouldn't really be callled!!!
+   AddCardToHandObject2 :1 1
+    Calling Move Constructor
+End Calling Object Version2
+
+
+Calling Object Version3
+   AddCardToHandObject3 :1 1
+    BAD!!!! Copy Constructor being called.  I shouldn't really be callled!!!
+End Calling Object Version3
+
+
+Calling Object Version4
+   AddCardToHandObject4 :1 1
+    Calling Move Constructor
+End Calling Object Version4
+
+
+Stack
+   Push Huey 1
+   Push Louie 2
+   Push Dewey 3
+Dewey 3 
+Louie 2 
+Huey 1 
+
+Queue
+   Enque Huey 1
+   Enque Louie 2
+   Enque Dewey 3
+Huey 1 
+Louie 2 
+Dewey 3 
+calling pop and Dequee
+Stack
+Louie 2 
+Huey 1 
+
+Queue
+Louie 2 
+Dewey 3 
+calling clear methods
+calling delete
+Deleting Huey 1
+Deleting Louie 2
+Deleting Dewey 3
