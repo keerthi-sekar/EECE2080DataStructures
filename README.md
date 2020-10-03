@@ -16,4 +16,3 @@ GitHub Setup: Keerthi Sekar
 	- Lead: Grayson
 - ***Lab04:*** Use Recursion and Stacks and learn to use Exceptions
 	- Lead: Keerthi
-	- Lead: Keerthi
