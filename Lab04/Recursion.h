@@ -14,7 +14,7 @@ class Palidrome
 	string FormatLetters();
 
 	bool CheckPalidromeRecursion(int startIndex, int endIndex);
-	bool CheckPalidroneStack();
+	bool CheckPalidromeStack();
 
 	private:
 	string word;

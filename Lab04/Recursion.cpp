@@ -17,8 +17,7 @@ string Palidrome::FormatLetters()
 	string newWord = "";
 
 	newWord = boost::algorithm::to_lower_copy(word);
-	cout << newWord << endl;
-	
+
 	return newWord;
 }
 
@@ -32,7 +31,6 @@ bool Palidrome::CheckPalidromeRecursion(int startIndex, int endIndex)
 		return false;
 	}
 	
-	//For passing in index (>=) referenced stackoverflow for help
 	if(startIndex >= endIndex)
 	{
 		return true;
@@ -47,8 +45,40 @@ bool Palidrome::CheckPalidromeRecursion(int startIndex, int endIndex)
 
 bool Palidrome::CheckPalidromeStack()
 {
+	//referenced stackoverflow for logic help
+	//Source: https://stackoverflow.com/questions/29500782/stack-and-queue-palindrome-program
+	
+	string formatWord = FormatLetters();
+	int cutLength = formatWord.length()/2;
+	bool isPalidrome = false;
 
-	return true;
+	if(formatWord.length() > 0)
+	{
+		for(int i = cutLength - 1; i >= 0; i--)
+		{
+			wordCheck.push(formatWord[i]);
+		}
+
+		for(int i = 1; i <= cutLength && !wordCheck.empty(); ++i)
+		{
+			if(wordCheck.top() == formatWord[formatWord.length() - i])
+			{
+				isPalidrome = true;
+			}
+			else
+			{
+				isPalidrome = false;
+			}
+			wordCheck.pop();
+			
+		}
+	}
+	else
+	{
+		isPalidrome = false;
+	}
+	
+	return isPalidrome;
 }
 
 

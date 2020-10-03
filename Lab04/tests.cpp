@@ -31,6 +31,34 @@
 		ASSERT_FALSE(coolWord.CheckPalidromeRecursion(0, wordSize - 1));
 	}
 
+	TEST(Palidrome, StackCheck1)
+	{
+		Palidrome coolWord("radar");
+		
+		ASSERT_TRUE(coolWord.CheckPalidromeStack());
+	}
+
+	TEST(Palidrome, StackCheck2)
+	{
+		Palidrome coolWord("RAdar");
+		
+		ASSERT_TRUE(coolWord.CheckPalidromeStack());
+	}
+
+	TEST(Palidrome, StackCheck3)
+	{
+		Palidrome coolWord("keerthi");
+		
+		ASSERT_FALSE(coolWord.CheckPalidromeStack());
+	}
+
+	TEST(Palidrome, StackEmptyCheck)
+	{
+		Palidrome coolWord("");
+		
+		ASSERT_FALSE(coolWord.CheckPalidromeStack());
+	}
+
 	/*TEST(Factorial, Recursion1)
 	{
 		FactorialByRecursion calculator;
