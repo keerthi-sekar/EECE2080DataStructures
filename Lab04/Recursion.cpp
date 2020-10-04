@@ -120,7 +120,7 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 	}
 
 
-	for (int i = 0; i < 8; ++i) {
+	for (int i = 0; i < 8; i++) {
 
 		if (CheckSafeQueens(chessBoard, i, col)) {
 			m_board[i][col] = 1;
@@ -141,10 +141,32 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 
 bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col) 
 {
+	for(int i = 0; i < col; i++)
+	{
+		if(chessBoard.m_board[row][i] != 0)
+		{
+			return false;
+		}
+	}
 
-    return false;
+	for(int i = row, j = col; i >= 0 && j >= 0; i--, j--)
+	{
+		if(chessBoard.m_board[i][j] != 0)
+		{
+			return false;
+		}
+	}
 
-    // TODO
+	for(int i = row, j = col; j >= 0 && i < 8; i++, j--)
+	{
+		if(chessBoard.m_board[i][j] != 0)
+		{
+			return false;
+		}
+	}
+	
+	chessBoard.col_stack.push_back(col);
+    return true; 
 }
 
 
@@ -174,17 +196,23 @@ extern std::string CallSimpleExceptionMethod(int i)
     // And also return a string of the exception recieved
     // The tests will tell you what to string to return.
 
-
 	std::string retVal;
 	MyFakeClass* resourceThatNeedsToBeCleanedup = nullptr;
-
 	resourceThatNeedsToBeCleanedup = new MyFakeClass();
-
-	SimpleExceptionMethod(1);
-
+	
+	try
+	{
+		SimpleExceptionMethod(i);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
+	
 	delete resourceThatNeedsToBeCleanedup;
 
 	return retVal;
+
 }
 
 // NOTE this function should not be editted.
@@ -204,7 +232,7 @@ extern void SimpleExceptionMethod(int i)
 	else if (i == 3)
 	{
         // TODO uncomment line below, as you need to have all three exceptions working here
-		//throw MyException3();
+		throw MyException3();
 	}
 	else
 	{
@@ -216,7 +244,6 @@ extern void SimpleExceptionMethod(int i)
 }
 
 
-
 char const* MyBaseException::what() const throw() {
 	return "MyBaseException";
 }
@@ -226,4 +253,6 @@ char const* MyException1::what() const throw() {
 char const* MyException2::what() const throw() {
 	return "MyException2";
 }
-// TODO make a MyException3::what
+char const* MyException3::what() const throw() {
+	return "MyException3";
+}

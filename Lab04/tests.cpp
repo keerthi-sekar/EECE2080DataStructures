@@ -97,7 +97,7 @@
 		ASSERT_EQ(3628800, val);
 
 
-	}
+	}*/
 	
 	TEST(Exception,UserDefinedExceptionTest1)
 	{
@@ -130,7 +130,7 @@
 		std::string status = CallSimpleExceptionMethod(4);
 		ASSERT_EQ(std::string("I did not get an Exception"), status);
 
-	}*/
+	}
 
  
 int main(int argc, char **argv) {
