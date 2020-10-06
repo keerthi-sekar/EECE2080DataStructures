@@ -109,27 +109,21 @@
 
 	TEST(Exception,UserDefinedExceptionTest2)
 	{
-
-
-			std::string status = CallSimpleExceptionMethod(2);
-			ASSERT_EQ(std::string("I got Exception 2"), status);
+		std::string status = CallSimpleExceptionMethod(2);
+		ASSERT_EQ(std::string("I got Exception 2"), status);
 
 	}
 
 	TEST(Exception,UserDefinedExceptionTest3)
 	{
-
 		std::string status = CallSimpleExceptionMethod(3);
 		ASSERT_EQ(std::string("I got Exception 3"), status);
-
 	}
 
 	TEST(Exception,UserDefinedExceptionTest4)
 	{
-
 		std::string status = CallSimpleExceptionMethod(4);
 		ASSERT_EQ(std::string("I did not get an Exception"), status);
-
 	}
 
  

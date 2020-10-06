@@ -116,6 +116,19 @@ int FactorialByStack::CalculateFactorial(int num) {
 bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 
 	if (col >= 8) {
+			string answer = "";
+	for (int i = 0; i < 8; ++i) {
+		for (int j = 0; j < 8; ++j) {
+			int temp = chessBoard.m_board[i][j];
+			stringstream ss;
+			ss << temp;
+			string str = ss.str();
+			answer = answer + str;
+		}
+		answer = answer + "\n";
+		
+	}
+	cout << answer << endl;
 		return true;
 	}
 
@@ -123,19 +136,40 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 	for (int i = 0; i < 8; i++) {
 
 		if (CheckSafeQueens(chessBoard, i, col)) {
-			m_board[i][col] = 1;
+			chessBoard.col_stack.push_back(col);
+			chessBoard.m_board[i][col] = 1;
 
+			while(!chessBoard.col_stack.empty() && chessBoard.col_stack.size() < 8 )
+			{
+				col += 1;
+				if(CheckSafeQueens(chessBoard, i, col))
+				{
+					chessBoard.col_stack.push_back(col);
+					chessBoard.m_board[i][col] = 1;
+					break;
+				}
+				else
+				{
+					chessBoard.m_board[i][chessBoard.col_stack.back()] = 0;
+					chessBoard.col_stack.pop_back();
+				}
+				
+			}
 
-			if (Solve(chessBoard, col + 1) == true)
-				return true;
-
-
-
-			m_board[i][col] = 0;
+			chessBoard.m_board[i][col] = 0;
 
 		}
 	}
-	return false;
+
+	if(chessBoard.col_stack.back() == 9)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
 }
 
 
@@ -143,7 +177,7 @@ bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col)
 {
 	for(int i = 0; i < col; i++)
 	{
-		if(chessBoard.m_board[row][i] != 0)
+		if(chessBoard.m_board[row][i] != 0 && i != chessBoard.col_stack.back())
 		{
 			return false;
 		}
@@ -165,7 +199,6 @@ bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col)
 		}
 	}
 	
-	chessBoard.col_stack.push_back(col);
     return true; 
 }
 
@@ -201,17 +234,30 @@ extern std::string CallSimpleExceptionMethod(int i)
 	resourceThatNeedsToBeCleanedup = new MyFakeClass();
 	
 	try
-	{
-		SimpleExceptionMethod(i);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what();
-	}
-	
-	delete resourceThatNeedsToBeCleanedup;
+    {
+        SimpleExceptionMethod(i);
+    }
+    catch(MyException1& e)
+    {
+        retVal = "I got Exception 1";
+        return retVal;
+    }
+    catch(MyException2& e)
+    {
+		retVal = "I got Exception 2";
+		return retVal;
+    }
+    catch(MyException3& e)
+    {
+		retVal = "I got Exception 3";
+		return retVal;
+    }
 
-	return retVal;
+    retVal = "I did not get an Exception";
+
+    delete resourceThatNeedsToBeCleanedup;
+
+    return retVal;
 
 }
 
