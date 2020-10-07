@@ -5,7 +5,7 @@
 
 	TEST(Palidrome, RecursionCheck1)
 	{
-		Palidrome coolWord("radar");
+		Palidrome coolWord("rotator");
 		int wordSize = coolWord.GetWord().length();
 		ASSERT_TRUE(coolWord.CheckPalidromeRecursion(0, wordSize - 1));
 	}
