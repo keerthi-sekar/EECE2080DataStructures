@@ -20,8 +20,38 @@ void InitializeArray(int currentDataset[], int arraySize)
 	{
 		currentDataset[i] = RandomNumber();
 	}
+}
 
-	cout << "Filled array!" << endl;
+void PrintArray(int currentDataset[], int arraySize)
+{
+	for(int i=0; i < arraySize; i++)
+	{
+		cout << currentDataset[i] << endl;
+	}
+}
+
+//Use pointers to reduce copies for larger arrays
+void Swap(int *first, int *last)
+{
+	int temp = *first;
+	*first = *last;
+	*last = temp;
+}
+
+//Referenced geeksforgeeks code for implementation
+void BubbleSort(int currentDataset[], int arraySize)
+{
+	for(int i = 0; i < arraySize-1; i++)
+	{
+		for(int j = 0; j < arraySize-i-1; j++)
+		{
+			if(currentDataset[j] > currentDataset[j+1])
+			{
+				Swap(&currentDataset[j], &currentDataset[j+1]);
+			}
+		}
+	}
+	cout << "Bubble sort for array size of: " << arraySize << endl;
 }
 
 int main()
@@ -40,14 +70,13 @@ int main()
 	InitializeArray(dataset5000, 5000);
 	InitializeArray(dataset25000, 25000);
 
-	//testing purposes only *remove before submission
-	for(int i = 0; i < 10; i++)
-	{
-		cout << dataset10[i] << endl;
-	}
+	BubbleSort(dataset10, 10);
+	BubbleSort(dataset100, 100);
+	BubbleSort(dataset500, 500);
+	BubbleSort(dataset5000, 5000);
+	BubbleSort(dataset25000, 25000);
 
-
-	
+	PrintArray(dataset10, 10);
 
     return 0;
 }
