@@ -54,6 +54,42 @@ void BubbleSort(int currentDataset[], int arraySize)
 	cout << "Bubble sort for array size of: " << arraySize << endl;
 }
 
+//TODO: Fix Segmentation Fault (core dumped)
+void InsertionSort(int currentDataset[], int arraySize)
+{
+	unsigned int i, j;
+	int ref;
+
+	for(i = 1; i  < arraySize; i++)
+	{
+		ref = currentDataset[i];
+		j = i-1;
+
+		while(j >= 0 && currentDataset[j] > ref)
+		{
+			currentDataset[j+1] = currentDataset[j];
+			j = j-1;
+		}
+		currentDataset[j-1] = ref;
+	}
+}
+
+/*void MergeSort(int currentDataset[], int arraySize)
+{
+
+}*/
+
+/*void QuickSort(int currentDataset[], int arraySize)
+{
+
+}
+*/
+/*
+void RadixSort(int currentDataset[], int arraySize)
+{
+
+}
+*/
 int main()
 {
 	//initialize datasets
@@ -65,16 +101,18 @@ int main()
 
 	//put random numbers in each one, duplicate numbers may occur
 	InitializeArray(dataset10, 10);
-	InitializeArray(dataset100, 100);
+	/*InitializeArray(dataset100, 100);
 	InitializeArray(dataset500, 500);
 	InitializeArray(dataset5000, 5000);
-	InitializeArray(dataset25000, 25000);
+	InitializeArray(dataset25000, 25000);*/
 
-	BubbleSort(dataset10, 10);
+	/*BubbleSort(dataset10, 10);
 	BubbleSort(dataset100, 100);
 	BubbleSort(dataset500, 500);
 	BubbleSort(dataset5000, 5000);
-	BubbleSort(dataset25000, 25000);
+	BubbleSort(dataset25000, 25000);*/
+
+	//InsertionSort(dataset10, 10);
 
 	PrintArray(dataset10, 10);
 
