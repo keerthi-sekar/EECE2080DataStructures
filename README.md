@@ -16,3 +16,5 @@ GitHub Setup: Keerthi Sekar
 	- Lead: Grayson
 - ***Lab04:*** Use Recursion and Stacks and learn to use Exceptions
 	- Lead: Keerthi
+- ***Lab05:*** Write sorting algorithms and analyze them based on runtime
+	- Lead: Keerthi
