@@ -1,17 +1,18 @@
 #include <string>
+#include <iostream>
 
+using namespace std;
 class Node
 {
 public:
 	Node();
-	Node(int val);
-	Node(int val, Node * nextNode);
+	Node(string val);
 	virtual ~Node();
 
 	string m_value;
 	Node *left;
 	Node *right;
-}
+};
 
 class BinarySearchTree
 {
@@ -21,8 +22,11 @@ public:
 	~BinarySearchTree();
 	void Insert(string value);
 	Node* Find(string value);
-	int Size();
-	void EmptyTree();
+	int Size(Node * currentNode);
+	bool EmptyTree(Node * currentNode);
+	//vector<string> GetAllAscending();
+	//vector<string> GetAllDescending();
+
 private:
 	Node *root;
 };

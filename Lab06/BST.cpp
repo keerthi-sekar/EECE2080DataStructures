@@ -1,19 +1,23 @@
 #include "BST.h"
+#include <iostream>
 
-Node::Node() : m_value(-1), m_next(nullptr)
+using namespace std;
+
+Node::Node()
 {
-
+	m_value = "0";
 }
 
-Node::Node(int val, Node * nextNode) : m_value(val), m_next(nextNode)
+Node::Node(string val)
 {
-
+	m_value = val;
+	left = nullptr;
+	right = nullptr;
 }
 
 Node::~Node()
 {
 	std::cout << "Deleting node with value " << m_value << std::endl;
-	delete m_next;
 }
 
 BinarySearchTree::BinarySearchTree()
@@ -23,9 +27,12 @@ BinarySearchTree::BinarySearchTree()
 
 BinarySearchTree::BinarySearchTree(string value)
 {
-	root = nullptr;
-	left = nullptr;
-	right = nullptr;
+	root->m_value = value;
+}
+
+BinarySearchTree::~BinarySearchTree()
+{
+	std::cout << "Delete binary search tree " << std::endl;
 }
 
 void BinarySearchTree::Insert(string value)
@@ -102,11 +109,27 @@ Node* BinarySearchTree::Find(string value)
 }
 
 //used geeksforgeeks recursive method
-int BinarySearchTree::Size()
+/*int BinarySearchTree::Size(Node * currentNode)
 {
 	if(root == nullptr)
 	{
 		return 0;
 	}
 	return(root->m_value + Size(root->left) + Size(root->right));
+}*/
+
+bool BinarySearchTree::EmptyTree(Node * currentNode)
+{
+	if(root == nullptr)
+	{
+		return true;
+	}
+
+	EmptyTree(currentNode->left);
+	EmptyTree(currentNode->right);
+
+	cout << "Deleting Node: " << currentNode->m_value << endl;
+
+	delete currentNode;
+	
 }
