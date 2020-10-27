@@ -1,11 +1,13 @@
 #include "BST.h"
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
 Node::Node()
 {
-	m_value = "0";
+
 }
 
 Node::Node(string val)
@@ -18,6 +20,8 @@ Node::Node(string val)
 Node::~Node()
 {
 	std::cout << "Deleting node with value " << m_value << std::endl;
+	delete left;
+	delete right;
 }
 
 BinarySearchTree::BinarySearchTree()
@@ -32,7 +36,16 @@ BinarySearchTree::BinarySearchTree(string value)
 
 BinarySearchTree::~BinarySearchTree()
 {
-	std::cout << "Delete binary search tree " << std::endl;
+	if(root)
+	{
+		std::cout << "Destructor BST " << std::endl;
+		EmptyTree(root);
+	}
+}
+
+Node* BinarySearchTree::GetRoot()
+{
+	return root;
 }
 
 void BinarySearchTree::Insert(string value)
@@ -84,11 +97,12 @@ Node* BinarySearchTree::Find(string value)
 {
 	if(root == nullptr)
 	{
+		cout << "root null" << endl;
 		return nullptr;
 	}
 	else
 	{
-		while(root)
+		while(root != nullptr)
 		{
 			if(value > root->m_value)
 			{
@@ -100,36 +114,70 @@ Node* BinarySearchTree::Find(string value)
 			}
 			else if(value == root->m_value)
 			{
+				cout << value + " found" << endl;
 				return root;
 			}
 		}
-
 		return nullptr;
 	}
 }
 
 //used geeksforgeeks recursive method
-/*int BinarySearchTree::Size(Node * currentNode)
+int BinarySearchTree::Size(Node* currentNode)
 {
-	if(root == nullptr)
+	if(currentNode == nullptr)
 	{
 		return 0;
 	}
-	return(root->m_value + Size(root->left) + Size(root->right));
-}*/
+	
+	return 1 + Size(currentNode->left) + Size(currentNode->right);
+}
 
-bool BinarySearchTree::EmptyTree(Node * currentNode)
+//used geeksforgeeks recursive method
+bool BinarySearchTree::EmptyTree(Node *currentNode)
 {
-	if(root == nullptr)
+	if(currentNode == nullptr)
 	{
 		return true;
 	}
-
+	
 	EmptyTree(currentNode->left);
 	EmptyTree(currentNode->right);
 
 	cout << "Deleting Node: " << currentNode->m_value << endl;
 
-	delete currentNode;
-	
+	if(currentNode->left != nullptr)
+	{
+		currentNode->left = nullptr;
+	}
+	if(currentNode->right != nullptr)
+	{
+		currentNode->right = nullptr;
+	}
+
+	delete(currentNode);
+}
+
+void BinarySearchTree::GetTreeNodes(Node* currentNode)
+{
+	if(currentNode == nullptr)
+	{
+		return;
+	}
+
+	GetTreeNodes(currentNode->right);
+	items.push_back(currentNode->m_value);
+	GetTreeNodes(currentNode->left);
+}
+
+vector<string> BinarySearchTree::GetAllAscending()
+{
+   sort(items.begin(), items.end());
+   return items;
+}
+
+vector<string> BinarySearchTree::GetAllDescending()
+{
+	sort(items.rbegin(), items.rend());
+	return items;
 }
