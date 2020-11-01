@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 class Node
@@ -20,15 +21,19 @@ public:
 	BinarySearchTree();
 	BinarySearchTree(string value);
 	~BinarySearchTree();
+	Node* GetRoot();
 	void Insert(string value);
 	Node* Find(string value);
 	int Size(Node * currentNode);
-	bool EmptyTree(Node * currentNode);
-	//vector<string> GetAllAscending();
-	//vector<string> GetAllDescending();
+	bool EmptyTree(Node * root);
+	void GetTreeNodes(Node* currentNode);
+	vector<string> GetAllAscending();
+	vector<string> GetAllDescending();
+
 
 private:
 	Node *root;
+	vector<string> items;
 };
 
 
