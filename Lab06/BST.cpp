@@ -36,11 +36,7 @@ BinarySearchTree::BinarySearchTree(string value)
 
 BinarySearchTree::~BinarySearchTree()
 {
-	if(root)
-	{
-		std::cout << "Destructor BST " << std::endl;
-		EmptyTree(root);
-	}
+
 }
 
 Node* BinarySearchTree::GetRoot()
@@ -136,26 +132,16 @@ int BinarySearchTree::Size(Node* currentNode)
 //used geeksforgeeks recursive method
 bool BinarySearchTree::EmptyTree(Node *currentNode)
 {
-	if(currentNode == nullptr)
+	if(currentNode)
 	{
+		delete currentNode;
 		return true;
 	}
-	
-	EmptyTree(currentNode->left);
-	EmptyTree(currentNode->right);
-
-	cout << "Deleting Node: " << currentNode->m_value << endl;
-
-	if(currentNode->left != nullptr)
+	else
 	{
-		currentNode->left = nullptr;
-	}
-	if(currentNode->right != nullptr)
-	{
-		currentNode->right = nullptr;
+		return false;
 	}
 
-	delete(currentNode);
 }
 
 void BinarySearchTree::GetTreeNodes(Node* currentNode)
