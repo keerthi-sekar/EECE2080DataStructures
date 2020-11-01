@@ -18,3 +18,5 @@ GitHub Setup: Keerthi Sekar
 	- Lead: Keerthi
 - ***Lab05:*** Write sorting algorithms and analyze them based on runtime
 	- Lead: Keerthi
+- ***Lab06:*** Write the basic functions for a binary search tree class and their unit tests
+	- Lead: Keerthi
