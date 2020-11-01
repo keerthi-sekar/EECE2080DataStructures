@@ -224,8 +224,15 @@ using namespace std;
         BSTObject.Insert("Star Trek");
         BSTObject.Insert("Space Balls");
         BSTObject.Insert("Galaxy Quest");
-        
+
         ASSERT_TRUE(BSTObject.EmptyTree(BSTObject.GetRoot()));
+    }
+
+    TEST(BinarySearchTree, EmptyTest2)
+    {
+        BinarySearchTree BSTObject;
+
+        ASSERT_FALSE(BSTObject.EmptyTree(BSTObject.GetRoot()));
     }
 
 int main(int argc, char **argv) {
