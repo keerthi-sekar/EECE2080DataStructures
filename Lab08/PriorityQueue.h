@@ -3,9 +3,10 @@ class ArrayBasedQueue
 {
     public:
         ArrayBasedQueue();
-        void Insert(int value);
-        void Remove(int value);
+        bool Insert(int value);
+        bool Remove(int value);
         void Print();
+        ~ArrayBasedQueue();
     private:
         int m_values[10];
 };

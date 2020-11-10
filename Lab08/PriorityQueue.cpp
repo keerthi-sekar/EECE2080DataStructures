@@ -49,3 +49,8 @@ void:: ArrayBasedQueue::Print()
         cout << m_values[i] << endl;
     }
 }
+
+ArrayBasedQueue::~ArrayBasedQueue()
+{
+    
+}
