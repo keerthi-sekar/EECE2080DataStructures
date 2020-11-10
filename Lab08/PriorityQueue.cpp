@@ -10,6 +10,7 @@ ArrayBasedQueue::ArrayBasedQueue()
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
         m_values[i].value = -1;
+        m_values[i].priorityNumber = 0;
     }
 }
 
@@ -20,6 +21,7 @@ bool ArrayBasedQueue::Insert(int value, int priorityNumber)
         if(m_values[i].value == -1)
         {
             m_values[i].value = value;
+            m_values[i].priorityNumber = priorityNumber;
             return true;
         }
     }
@@ -34,6 +36,7 @@ bool ArrayBasedQueue::Remove(int value, int priorityNumber)
         if(m_values[i].value == value)
         {
             m_values[i].value = -1;
+            m_values[i].priorityNumber = 0;
             return true;
         }
     }
@@ -45,7 +48,7 @@ void:: ArrayBasedQueue::Print()
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
-        cout << m_values[i].value << endl;
+        cout << "value: " + m_values[i].value << " priority: " + m_values[i].priorityNumber << endl;
     }
 }
 
