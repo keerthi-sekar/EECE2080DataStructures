@@ -1,14 +1,21 @@
+#include <iostream>
+
+struct Element
+{
+    int value;
+    int priorityNumber;
+};
 
 class ArrayBasedQueue
 {
     public:
         ArrayBasedQueue();
-        bool Insert(int value);
-        bool Remove(int value);
+        bool Insert(int value, int priorityNumber);
+        bool Remove(int value, int priorityNumber);
         void Print();
         ~ArrayBasedQueue();
     private:
-        int m_values[10];
+        Element m_values[10];
 };
 
 class Heap

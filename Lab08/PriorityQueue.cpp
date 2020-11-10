@@ -1,6 +1,5 @@
 #include "PriorityQueue.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -10,17 +9,17 @@ ArrayBasedQueue::ArrayBasedQueue()
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
-        m_values[i] = -1;
+        m_values[i].value = -1;
     }
 }
 
-bool ArrayBasedQueue::Insert(int value)
+bool ArrayBasedQueue::Insert(int value, int priorityNumber)
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
-        if(m_values[i] == -1)
+        if(m_values[i].value == -1)
         {
-            m_values[i] = value;
+            m_values[i].value = value;
             return true;
         }
     }
@@ -28,13 +27,13 @@ bool ArrayBasedQueue::Insert(int value)
     return false;
 }
 
-bool ArrayBasedQueue::Remove(int value)
+bool ArrayBasedQueue::Remove(int value, int priorityNumber)
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
-        if(m_values[i] == value)
+        if(m_values[i].value == value)
         {
-            m_values[i] = -1;
+            m_values[i].value = -1;
             return true;
         }
     }
@@ -46,7 +45,7 @@ void:: ArrayBasedQueue::Print()
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
-        cout << m_values[i] << endl;
+        cout << m_values[i].value << endl;
     }
 }
 
