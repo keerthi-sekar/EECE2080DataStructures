@@ -1,5 +1,7 @@
 #include "PriorityQueue.h"
 #include <iostream>
+#include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -14,14 +16,14 @@ ArrayBasedQueue::ArrayBasedQueue()
     }
 }
 
-bool ArrayBasedQueue::Insert(int value, int priorityNumber)
+bool ArrayBasedQueue::Insert(int value, int pn)
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
         if(m_values[i].value == -1)
         {
             m_values[i].value = value;
-            m_values[i].priorityNumber = priorityNumber;
+            m_values[i].priorityNumber = pn;
             return true;
         }
     }
@@ -29,7 +31,7 @@ bool ArrayBasedQueue::Insert(int value, int priorityNumber)
     return false;
 }
 
-bool ArrayBasedQueue::Remove(int value, int priorityNumber)
+bool ArrayBasedQueue::Remove(int value)
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
@@ -46,6 +48,8 @@ bool ArrayBasedQueue::Remove(int value, int priorityNumber)
 
 void:: ArrayBasedQueue::Print()
 {
+    //i think it needs to be sorted by priority
+    //https://stackoverflow.com/questions/61499825/k-sorted-array-using-priority-queue-c
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
         cout << "value: " + m_values[i].value << " || priority: " + m_values[i].priorityNumber << endl;
@@ -55,4 +59,21 @@ void:: ArrayBasedQueue::Print()
 ArrayBasedQueue::~ArrayBasedQueue()
 {
     
+}
+
+Heap::Heap()
+{
+    Element element;
+    element.value = -1;
+    element.priorityNumber = 0;
+    
+    for(int i = 0; i < 10; i++)
+    {
+        m_values.push_back(element);
+    }
+}
+
+Heap::~Heap()
+{
+
 }
