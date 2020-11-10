@@ -48,7 +48,7 @@ void:: ArrayBasedQueue::Print()
 {
     for(int i = 0; i < MVALUES_SIZE; i++)
     {
-        cout << "value: " + m_values[i].value << " priority: " + m_values[i].priorityNumber << endl;
+        cout << "value: " + m_values[i].value << " || priority: " + m_values[i].priorityNumber << endl;
     }
 }
 
