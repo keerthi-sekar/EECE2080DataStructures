@@ -4,33 +4,39 @@
 
 using namespace std;
 
-struct Element
-{
-    int value;
-    int priorityNumber;
-};
-
 class ArrayBasedQueue
 {
     public:
-        ArrayBasedQueue();
+        ArrayBasedQueue(int size);
         bool Insert(int value, int pn);
-        bool Remove(int value);
+        bool Remove();
         void Print();
         ~ArrayBasedQueue();
     private:
-        Element m_values[10];
+        int m_size;
+        int m_values[5000];
+        int m_priority[5000];
+        int m_front;
+        int m_back;
+        
 };
 
 class Heap
 {
-    //sorry grayson :( me too slow so I didnt get to do this before work, got stuck on print for array: Help -> https://www.geeksforgeeks.org/insertion-and-deletion-in-heaps/
     public:
         Heap();
-        bool Insert();
-        bool Remove();
+        bool Insert(int value);
+        bool Remove(int value);
+        int RemoveMax();
+        void Ascend(int value);
+        void Descend(int value);
         void Print();
+        int getParent(int value);
+        int getLeft(int value);
+        int getRight(int value);
+        int getMSize() { return m_size; }
         ~Heap();
     private:
-        vector<Element> m_values; 
+        int m_elements[5000]; 
+        int m_size;
 };
