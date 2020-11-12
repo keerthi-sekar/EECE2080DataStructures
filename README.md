@@ -20,3 +20,7 @@ GitHub Setup: Keerthi Sekar
 	- Lead: Keerthi
 - ***Lab06:*** Write the basic functions for a binary search tree class and their unit tests
 	- Lead: Keerthi
+- ***Lab07:*** Create a D&D game using Class templates and make the UML diagrams
+	- Lead: Grayson
+- ***Lab08:*** Implement Priority Queues using Arrays and a Heap and analyze the function method times
+	- Lead: Keerthi
