@@ -24,3 +24,5 @@ GitHub Setup: Keerthi Sekar
 	- Lead: Grayson
 - ***Lab08:*** Implement Priority Queues using Arrays and a Heap and analyze the function method times
 	- Lead: Keerthi
+- ***Lab09:*** Implement Graphs using 2D vectors and display their functionality using a file and user interface
+	- Lead: Keerthi
