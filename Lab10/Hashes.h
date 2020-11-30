@@ -79,7 +79,7 @@ class Hash
 
 			if(array[index]->key1 == key1 )
 			{
-				return array[index]->value;
+				return array[index]->value1;
 				index++;
 				index %= capacity;
 			}
