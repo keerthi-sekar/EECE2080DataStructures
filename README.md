@@ -27,3 +27,4 @@ GitHub Setup: Keerthi Sekar
 - ***Lab09:*** Implement Graphs using 2D vectors and display their functionality using a file and user interface
 	- Lead: Keerthi
 - ***Lab10:*** Implement Hashes display their functionality using a user interface (Also created various speed tests to check the how fast hashes are)
+- ***Final Exam:*** Complete API design for problem provided on Final Exam and do just the design and unit test (no implementation) as provided in the instructions by Dr. Olekas
